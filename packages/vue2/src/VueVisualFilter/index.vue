@@ -88,10 +88,10 @@ export default {
         type: newType,
         values: [newSampleValue = ""],
       } = this.filteringOptions.data.find(
-        (field) => {
-          field.name === newFieldName
-        },
+        (field) => field.name === newFieldName,
       )
+      const foundIndex = this.filteringOptions.data.findIndex(item => item.name === newFieldName);
+      newSampleValues.push(this.filteringOptions.data[foundIndex].values);
       if (condition.dataType !== newType) {
         condition.method =
           (newType === DataType.NUMERIC
