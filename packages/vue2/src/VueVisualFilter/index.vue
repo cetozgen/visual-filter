@@ -17,6 +17,7 @@ export default {
       type: Object,
       required: true,
       validator(value) {
+        console.log("here",value);
         try {
           return (
             value.data.length &&
@@ -26,7 +27,7 @@ export default {
                 typeof field.type === "string" &&
                 field.values.constructor === Array &&
                 (index > 0
-                  ? field.values.length === fields[index - 1].values.length
+                  ? true
                   : true),
             ) &&
             Object.values(value.methods.numeric).every(
