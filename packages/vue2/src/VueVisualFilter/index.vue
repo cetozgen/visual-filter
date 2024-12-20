@@ -89,8 +89,8 @@ export default {
         values: [newSampleValue = ""],
       } = this.filteringOptions.data.find(
         (field) => {
-          field.name === newFieldName;
-          newSampleValues.push(field.values);
+          field.name === newFieldName,
+          newSampleValues.push(field.values)
         },
       )
       if (condition.dataType !== newType) {
