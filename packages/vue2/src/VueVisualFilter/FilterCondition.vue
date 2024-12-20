@@ -36,6 +36,10 @@ export default {
         this.$emit("updateField", this.condition, newFieldName)
       }
     },
+    log(item) {
+      console.log("in FilterCondition options init")
+      console.log(item)
+    }
   },
 }
 </script>
@@ -72,7 +76,8 @@ export default {
     </slot>
     <slot name="argumentUpdation" :condition="condition">
       <input type="text" v-model="condition.arguments" v-if="condition.method == isNumeric">
-      <option v-for="argument in condition.arguments" :key="argument" :value="argument" v-if="condition.method != isNumeric">
+      <option v-for="argument in condition.arguments" :key="argument" :value="argument" v-if="condition.method != isNumeric"
+      @load="log(condition.arguments)">
       </option>
     </slot>
     <slot
