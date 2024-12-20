@@ -83,13 +83,14 @@ export default {
   methods: {
     updateConditionField(condition, newFieldName) {
       console.log("in updateConditionField", condition, newFieldName);
+      let newSampleValues = [];
       const {
         type: newType,
         values: [newSampleValue = ""],
       } = this.filteringOptions.data.find(
         (field) => {
           field.name === newFieldName;
-          newSampleValue = field.values[0];
+          newSampleValues.push(field.values);
         },
       )
       if (condition.dataType !== newType) {
@@ -97,7 +98,7 @@ export default {
           (newType === DataType.NUMERIC
             ? this.numericMethodNames[0]
             : this.nominalMethodNames[0]) || ""
-        condition.argument = newSampleValue
+        condition.argument = newSampleValues
         condition.dataType = newType
       }
     },
