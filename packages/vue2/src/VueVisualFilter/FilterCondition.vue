@@ -72,7 +72,7 @@ export default {
     </slot>
     <slot name="argumentUpdation" :condition="condition">
       <input type="text" v-model="condition.argument" v-if="condition.method == isNumeric">
-      <option v-for="argument in arguments" :key="argument" :value="argument" v-if="condition.method != isNumeric">
+      <option v-for="argument in condition.arguments" :key="argument" :value="argument" v-if="condition.method != isNumeric">
         {{ argument }}
       </option>
     </slot>
