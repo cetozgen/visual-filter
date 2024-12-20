@@ -126,6 +126,7 @@ export default {
               ? this.numericMethodNames[0]
               : this.nominalMethodNames[0]) || "",
           argument: sampleValue,
+          arguments: this.filteringOptions.data[0].values,
         })
       }
     },
