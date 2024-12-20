@@ -93,6 +93,7 @@ export default {
       const foundIndex = this.filteringOptions.data.findIndex(item => item.name === newFieldName);
       newSampleValues.push(this.filteringOptions.data[foundIndex].values);
       condition.arguments = newSampleValues
+      condition.argument = newSampleValue
       if (condition.dataType !== newType) {
         condition.method =
           (newType === DataType.NUMERIC
