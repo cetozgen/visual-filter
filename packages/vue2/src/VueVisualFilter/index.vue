@@ -17,7 +17,7 @@ export default {
       type: Object,
       required: true,
       validator(value) {
-        console.log("here",value);
+        console.log("in validation",value);
         try {
           return (
             value.data.length &&
@@ -82,11 +82,15 @@ export default {
   },
   methods: {
     updateConditionField(condition, newFieldName) {
+      console.log("in updateConditionField", condition, newFieldName);
       const {
         type: newType,
         values: [newSampleValue = ""],
       } = this.filteringOptions.data.find(
-        (field) => field.name === newFieldName,
+        (field) => {
+          field.name === newFieldName;
+          newSampleValue = field.values[0];
+        },
       )
       if (condition.dataType !== newType) {
         condition.method =
@@ -98,6 +102,7 @@ export default {
       }
     },
     addFilter(filters, newFilterType) {
+      console.log("in addFilter",newFilterType);
       if (newFilterType === FilterType.GROUP) {
         filters.push({
           type: FilterType.GROUP,
